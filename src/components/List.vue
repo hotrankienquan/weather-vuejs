@@ -1,44 +1,45 @@
 <template>
-  <div>
     <div>
-      <input type="text" v-model="newTodo" />
-      <button @click="addToDo()">add to do</button>
+        <div>
+            <input type="text" v-model="newToDo">
+            <button @click="addToDo()">Add</button>
+        </div>
+        <div class="todo">
+            <todo
+                v-for="(todo, index) in todos"
+                v-bind:key="index"
+                :list="todo"
+                :deleteToDo="deleteToDo"
+                :index="index"
+            />
+            
+        </div>
     </div>
-    <div>
-      <Todo
-        v-for="(todo, index) in todos"
-        :key="index"
-        :todo="todo"
-        :deleteToDo="deleteToDo"
-      />
-    </div>
-  </div>
 </template>
 <script>
-import Todo from "./Todo.vue";
+import Todo from './Todo.vue'
 export default {
-  data() {
-    return {
-      newTodo: "",
-      todos: [
-        // { content: "hoc js", done: true },
-        // { content: "hoc vuejs", done: false },
-      ],
-    };
-  },
-  methods: {
-    addToDo() {
-      this.todos.push({ content: this.newTodo, done: false });
-      this.newTodo = "";
+  components: { Todo },
+    methods: {
+        addToDo(){
+            this.todos.push({content: this.newToDo, done: false});
+            this.newToDo = '';
+        },
+        deleteToDo(index){
+            this.todos.splice(index, 1);
+        }
     },
-    deleteToDo(index) {
-      this.todos.splice(index, 1);
-    },
-  },
-  components: {
-    Todo,
-  },
-};
+    data(){
+        return {
+            newToDo: '',
+            todos: [
+                {content: 'nau an ', done: false},
+                {content: 'di hoc ', done: false},
+            ],
+        }
+    }
+}
 </script>
 <style scoped>
+
 </style>

@@ -1,26 +1,32 @@
 <template>
-  <div>
     <div id="search">
-      <h1>day la thanh search</h1>
-      {{ name }}
-      <button @click="text.textContent = 'xyz'">click</button>
-      <div>Text cha truyen vao: {{ text.textContent }}</div>
+        <h1>day la thanh search</h1>
+        <input type="text">
+        <div>
+           
+        </div>
+        <button
+        @click="showTextCompose()"
+        >nut bam
+        </button>
     </div>
-  </div>
 </template>
 <script>
+
 export default {
-  props: ["name", "text"],
-  data() {
-    return {};
-  },
-};
+    props: ['text', 'showTextCompose'],
+    data(){
+        return {
+
+        }
+    }
+}
 </script>
 <style  scoped>
-input {
-  border-radius: 5px;
+input{
+        border-radius: 5px;
 }
-#search {
-  border: 1px solid red;
+#search{
+    border: 1px solid red;
 }
 </style>
